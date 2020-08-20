@@ -2,6 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import styled from 'styled-components'
+
+const Button = styled.button`
+  width: 300px;
+  height: 35px;
+  background-color: #5995ef;
+  color: #fff;
+  border-radius: 3px;
+`;
+
+const CenterButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 function Movie({ addToSavedList, getMovieList }) {
   const [movie, setMovie] = useState(null);
@@ -49,8 +64,10 @@ function Movie({ addToSavedList, getMovieList }) {
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
-      <button onClick={()=> history.push(`/update-movie/${movie.id}`)}>Edit</button>
-      <button onClick={handleDelete} >Delete</button>
+      <CenterButton>
+        <Button onClick={()=> history.push(`/update-movie/${movie.id}`)}>Edit</Button>
+        <Button onClick={handleDelete} >Delete</Button>
+      </CenterButton>
     </div>
   );
 }

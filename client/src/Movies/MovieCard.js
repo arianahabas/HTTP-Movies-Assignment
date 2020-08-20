@@ -1,9 +1,21 @@
 import React from 'react';
+import styled from 'styled-components'
+
+const Container = styled.div` 
+  border: 2px solid grey;
+  width: 50vw;
+  font-family: 'Bangers', cursive;
+  text-align:center;
+  border-radius: 10px;
+  :hover {
+    box-shadow: 0 0 10px yellow;
+  }
+`
 
 const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
   return (
-    <div className="movie-card">
+    <Container className="movie-card">
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
@@ -18,7 +30,7 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
-    </div>
+    </Container>
   );
 };
 

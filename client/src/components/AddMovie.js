@@ -3,15 +3,36 @@ import { useHistory } from "react-router-dom";
 import styled from 'styled-components'
 import axios from 'axios'
 
-const Container = styled.div `
+
+const Form = styled.form`
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Input = styled.input`
+  width: 300px;
+  height: 35px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+`;
+const Button = styled.button`
+  width: 300px;
+  height: 35px;
+  background-color: #5995ef;
+  color: #fff;
+  border-radius: 3px;
+  margin:0px 0px 30px 0px;
+`;
+const Center = styled.div`
     display: flex;
-    justify-content:center;
-    border: 1px solid black;
-    width: 25vw;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
 `
+
+
+
 const initialValues = {
     title: '',
     director: '',
@@ -46,11 +67,11 @@ export const AddMovie = ({getMovieList}) => {
     }
 
     return (
-        <Container>
-           <form onSubmit={onSubmit}>
+        <Center>
+           <Form onSubmit={onSubmit}>
                 <h2>Add Movie</h2>
                 <label>Title</label>
-                <input 
+                <Input 
                 type='text'
                 placeholder='Home Alone'
                 name='title'
@@ -59,7 +80,7 @@ export const AddMovie = ({getMovieList}) => {
                 />
                 <br/>
                 <label>Director</label>
-                 <input 
+                 <Input 
                 type='text'
                 placeholder='John Hughes'
                 name='director'
@@ -68,7 +89,7 @@ export const AddMovie = ({getMovieList}) => {
                 />
                  <br/>
                  <label>Metascore</label>
-                 <input 
+                 <Input 
                 type='text'
                 placeholder='89'
                 name='metascore'
@@ -77,7 +98,7 @@ export const AddMovie = ({getMovieList}) => {
                 />
                  <br/>
                  <label>Stars</label>
-                 <input 
+                 <Input 
                 type='text'
                 placeholder='Macaulay Culkin'
                 name='stars'
@@ -85,9 +106,9 @@ export const AddMovie = ({getMovieList}) => {
                 onChange={onChange}
                 />
                 <br/>
-                <button type='submit'>Add Movie</button>
-            </form>
-        </Container>
+                <Button type='submit'>Add Movie</Button>
+            </Form>
+        </Center>
     )
 }
 

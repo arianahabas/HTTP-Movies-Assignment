@@ -3,14 +3,30 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { useParams, useHistory } from 'react-router-dom'
 
-const Container = styled.div `
+const Form = styled.form`
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Input = styled.input`
+  width: 300px;
+  height: 35px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+`;
+const Button = styled.button`
+  width: 300px;
+  height: 35px;
+  background-color: #5995ef;
+  color: #fff;
+  border-radius: 3px;
+`;
+const Center = styled.div`
     display: flex;
-    justify-content:center;
-    border: 1px solid black;
-    width: 25vw;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
 `
 
 const initialValues = {
@@ -18,6 +34,7 @@ const initialValues = {
     director: '',
     metascore: ''
 }
+
 
 export const UpdateForm = () => {
     const [values, setValues] = useState(initialValues)
@@ -59,11 +76,11 @@ export const UpdateForm = () => {
     }
     
     return (
-        <Container>
-            <form onSubmit={handleSubmit}>
+        <Center>
+            <Form onSubmit={handleSubmit}>
                 <h2>Update Movie</h2>
                 <label>Title</label>
-                <input 
+                <Input 
                 type='text'
                 placeholder='title'
                 name='title'
@@ -72,7 +89,7 @@ export const UpdateForm = () => {
                 />
                 <br/>
                 <label>Director</label>
-                 <input 
+                 <Input 
                 type='text'
                 placeholder='director'
                 name='director'
@@ -81,7 +98,7 @@ export const UpdateForm = () => {
                 />
                  <br/>
                  <label>Metascore</label>
-                 <input 
+                 <Input 
                 type='text'
                 placeholder='metascore'
                 name='metascore'
@@ -89,8 +106,8 @@ export const UpdateForm = () => {
                 onChange={onChange}
                 />
                  <br/>
-                <button type='submit'>Update</button>
-            </form>
-        </Container>
+                <Button type='submit'>Update</Button>
+            </Form>
+        </Center>
     )
 }

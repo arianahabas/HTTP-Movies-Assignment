@@ -6,6 +6,27 @@ import Movie from "./Movies/Movie";
 import axios from 'axios';
 import { UpdateForm } from './components/UpdateForm'
 import AddMovie from './components/AddMovie'
+import styled from 'styled-components'
+
+const Button = styled.button`
+  background: black;
+  color: white;
+  border-radius: 7px;
+  padding: 20px;
+  margin: 10px;
+  font-size: 16px;
+  :disabled {
+    opacity: 0.4;
+  }
+  :hover {
+    box-shadow: 0 0 10px yellow;
+  }
+`;
+const CenterButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
@@ -33,7 +54,9 @@ const App = () => {
       <SavedList list={savedList} />
 
       <Link to='/add-movie'>
-        <button>Add Movie To List</button>
+        <CenterButton>
+          <Button>Add New Movie To List</Button>
+        </CenterButton>
       </Link>
      
       <Route exact path="/">
