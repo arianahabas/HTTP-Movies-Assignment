@@ -28,7 +28,7 @@ function Movie({ addToSavedList }) {
     return <div>Loading movie information...</div>;
   }
 
-console.log(movie)
+// console.log(movie)
 
   return (
     <div className="save-wrapper">

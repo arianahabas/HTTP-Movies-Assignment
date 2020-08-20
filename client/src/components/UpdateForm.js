@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 const Container = styled.div `
     display: flex;
@@ -22,6 +22,7 @@ const initialValues = {
 export const UpdateForm = () => {
     const [values, setValues] = useState(initialValues)
     const { id } = useParams()
+    const history = useHistory()
 
     useEffect(()=> {
         axios.get(`http://localhost:5000/api/movies/${id}`)
@@ -46,12 +47,20 @@ export const UpdateForm = () => {
     }
 
     const handleSubmit = (e) => {
-
+        e.preventDefault()
+        axios.put(`http://localhost:5000/api/movies/${id}`, values)
+        .then((res)=>{
+            // console.log('it worked', res)
+            history.push(`/movies/${id}`)
+        })
+        .catch((err) => {
+            console.log('you suck', err)
+        })
     }
     
     return (
         <Container>
-            <form action="">
+            <form onSubmit={handleSubmit}>
                 <h2>Update Movie</h2>
                 <label>Title</label>
                 <input 
@@ -80,7 +89,7 @@ export const UpdateForm = () => {
                 onChange={onChange}
                 />
                  <br/>
-                <button>Update</button>
+                <button type='submit'>Update</button>
             </form>
         </Container>
     )
